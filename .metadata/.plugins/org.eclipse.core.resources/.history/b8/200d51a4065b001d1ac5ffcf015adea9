@@ -1,0 +1,8 @@
+package com.hackerrank.interviewPreparationKit.warmUpChallenges;
+
+public class CountingValleys {
+	
+	public static void main(String[] args) {
+		
+	}
+}

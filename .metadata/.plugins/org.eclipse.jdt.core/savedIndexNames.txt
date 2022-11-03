@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\Eduardo Rasgado\Developer\javaWorkspaces\CompetitiveProgramming\.metadata\.plugins\org.eclipse.jdt.core
+2337261459.index
+2056620356.index
+1865797976.index

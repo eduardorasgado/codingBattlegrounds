@@ -1,0 +1,18 @@
+package com.hackerrank.interviewPreparationKit.warmUpChallenges;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class JumpingOnTheClouds {
+	
+	public static void main(String[] args) {
+		ArrayList<Integer> arr1 = new ArrayList<>() ;
+		System.out.println(arr1);		
+	}
+	
+	public static int call(List<Integer> c) {
+		int minJumps = 0;
+		
+		return minJumps;
+	}
+}

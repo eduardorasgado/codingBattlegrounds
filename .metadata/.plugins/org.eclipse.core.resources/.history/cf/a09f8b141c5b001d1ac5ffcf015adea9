@@ -1,0 +1,13 @@
+package com.hackerrank.interviewPreparationKit.warmUpChallenges;
+
+public class RepeatedString {
+	
+	public static void main(String[] args) {
+		System.out.println(repeatedString(0));
+	}
+	
+	public static long repeatedString(String s, long n) {
+		return i;
+	}
+	
+}

@@ -1,0 +1,24 @@
+package com.hackerrank.interviewPreparationKit.warmUpChallenges;
+
+public class RepeatedString {
+	
+	public static void main(String[] args) {
+		
+		System.out.println(repeatedString("abcac", (long) 10));
+	}
+	
+	public static long repeatedString(String s, long n) {
+		long aLetterTimes = 0;
+		int sLength = s.length();
+		//
+		int sTimes = (int) Math.floor(n / sLength);
+		System.out.println(sTimes);
+		
+		for(int i = 0; i < sLength; i++) {
+			
+		}
+		
+		return aLetterTimes;
+	}
+	
+}

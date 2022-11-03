@@ -1,0 +1,39 @@
+/**
+ * 
+ */
+package com.hackerrank.interviewPreparationKit.warmUpChallenges;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Eduardo Rasgado
+ *
+ */
+public class SalesByMatch {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		ArrayList<Integer> myArr = new ArrayList<Integer>()
+		{
+			{
+				add(1); 
+				add(2); 
+				add(1); 
+				add(2); 
+				add(1); 
+				add(3); 
+				add(2);
+			}
+		}
+		sockMerchant(0, myArr);	
+	}
+	
+	public static int sockMerchant(int n, List<Integer> ar) {
+        // Write your code here
+        
+    }
+
+}

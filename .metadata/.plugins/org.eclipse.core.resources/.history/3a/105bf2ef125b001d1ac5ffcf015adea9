@@ -1,0 +1,12 @@
+package com.hackerrank.interviewPreparationKit.warmUpChallenges;
+
+public class JumpingOnTheClouds {
+	
+	public static void main(String[] args) {
+		System.out.println(call(0));		
+	}
+	
+	public static int call(int i) {
+		return i;
+	}
+}

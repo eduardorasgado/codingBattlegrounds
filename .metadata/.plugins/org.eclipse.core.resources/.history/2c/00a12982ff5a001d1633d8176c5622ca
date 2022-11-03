@@ -1,0 +1,47 @@
+/**
+ * 
+ */
+package com.hackerrank.interviewPreparationKit.warmUpChallenges;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author Eduardo Rasgado
+ *
+ */
+public class SalesByMatch {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		ArrayList<Integer> myArr = new ArrayList<Integer>()
+		{
+			{
+				add(1); add(2); add(1); add(2); add(1); add(3); add(2);
+			}
+		};
+		
+		System.out.println("Result: " + sockMerchant(0, myArr));	
+	}
+	
+	public static int sockMerchant(int n, List<Integer> ar) {
+        Map<Integer, Integer> repetitions = new HashMap<>();
+        
+        for(Integer sock : ar) {
+        	int value = 0;
+        	if(repetitions.containsKey(sock)) {
+        		value = repetitions.get(sock);
+        	} else {
+        		value++;
+        	}
+        	repetitions.put(1, value);
+        }
+		
+        return 0;
+    }
+
+}
