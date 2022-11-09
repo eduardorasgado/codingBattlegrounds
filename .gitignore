@@ -47,6 +47,8 @@ Thumbs.db
 */target
 /build
 */build
+/bin
+*/bin
 
 # IntelliJ specific files/directories #
 #######################################
@@ -68,3 +70,4 @@ atlassian-ide-plugin.xml
 # NetBeans specific files/directories #
 #######################################
 .nbattrs
+
