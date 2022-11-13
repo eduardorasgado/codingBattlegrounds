@@ -57,66 +57,33 @@ public class NewYearChaos {
 		// 1, 2, 3, 5, 4, 6, 7, 8
 		// print 1
 		//printArr(arr1);
-		minimumBribes2(arr1);
+		minimumBribes(arr1);
 		// 4 1 2 3
 		// print Too chaotic
 		//printArr(arr2);
-		minimumBribes2(arr2);
+		minimumBribes(arr2);
 		// 2, 1, 5, 3, 4
 		// print 3
 		//printArr(arr3);
-		minimumBribes2(arr3);
+		minimumBribes(arr3);
 		// 2, 5, 1, 3, 4
 		// print Too chaotic
 		//printArr(arr4);
-		minimumBribes2(arr4);
+		minimumBribes(arr4);
 		// print 4
 		// 1 2 5 3 4 7 8 6
-		minimumBribes2(arr5);
+		minimumBribes(arr5);
 		// Print 7
 		// 1 2 5 3 7 8 6 4
-		minimumBribes2(arr6);
+		minimumBribes(arr6);
 	}
 
 	/*
 	 * No value is returned. Print the minimum number of bribes necessary or Too chaotic 
 	 * if someone has bribed more than  people.
 	 * 
-	 */
+	 */	
 	public static void minimumBribes(List<Integer> q) {
-		int resultInt = 0;
-		String result = new String("");
-		int qLength = q.size();
-
-		for (int i = 0; i < qLength; i++) {
-			if (qLength - 1 - i >= 1) {
-				if (q.get(i) > q.get(i + 1)) {
-					resultInt += 1;
-					result = String.valueOf(resultInt);
-				}
-
-				if (qLength - 1 - i >= 2) {
-					if (q.get(i) > q.get(i + 2)) {
-						resultInt += 1;
-						result = String.valueOf(resultInt);
-					}
-
-					if (qLength - 1 - i >= 3) {
-						if (q.get(i) > q.get(i + 3)) {
-							System.out.println("i: " + i);
-							result = new String("Too chaotic");
-							break;
-						}
-
-					}
-				}
-			}
-		}
-
-		System.out.println(result);
-	}
-	
-	public static void minimumBribes2(List<Integer> q) {
 		int resultInt = 0;
 		String result = new String("");
 		int qLength = q.size();
