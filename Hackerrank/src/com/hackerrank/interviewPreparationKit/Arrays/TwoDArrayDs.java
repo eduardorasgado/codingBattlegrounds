@@ -140,14 +140,14 @@ public class TwoDArrayDs {
 		int rowSize = arr.get(0).size();
 		int maxSum = -9999;
 
+		List<Integer> currRow;
 		for (int i = 0; i < columnSize - 2; i++) {
-			List<Integer> currRow;
 			int localSum;
 			
 			for (int j = 0; j < rowSize - 2; j++) {
-				currRow = arr.get(i);
 				localSum = 0;
 
+				currRow = arr.get(i);
 				for (int k = 0; k < 3; k++) {
 					localSum += currRow.get(j + k);
 				}
@@ -160,9 +160,7 @@ public class TwoDArrayDs {
 					localSum += currRow.get(j + k);
 				}
 
-				System.out.println("local: " + localSum);
 				maxSum = Math.max(maxSum, localSum);
-				System.out.println("max: " + maxSum);
 			}
 		}
 		return maxSum;
