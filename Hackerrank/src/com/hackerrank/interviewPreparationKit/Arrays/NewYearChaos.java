@@ -38,18 +38,44 @@ public class NewYearChaos {
 			}
 		};
 		
+		// print 4
+		// 1 2 5 3 4 7 8 6
+		List<Integer> arr5 = new ArrayList<>() {
+			{
+				add(1); add(2); add(5); add(3); add(4); add(7); add(8); add(6);
+			}
+		};
+		
+		// Too chaotic
+		// 1 2 5 3 7 8 6 4
+		List<Integer> arr6 = new ArrayList<>() {
+			{
+				add(1); add(2); add(5); add(3); add(7); add(8); add(6); add(4);
+			}
+		};
+		
 		// 1, 2, 3, 5, 4, 6, 7, 8
 		// print 1
-		minimumBribes(arr1);
+		//printArr(arr1);
+		minimumBribes2(arr1);
 		// 4 1 2 3
 		// print Too chaotic
-		minimumBribes(arr2);
+		//printArr(arr2);
+		minimumBribes2(arr2);
 		// 2, 1, 5, 3, 4
 		// print 3
-		minimumBribes(arr3);
+		//printArr(arr3);
+		minimumBribes2(arr3);
 		// 2, 5, 1, 3, 4
 		// print Too chaotic
-		minimumBribes(arr4);
+		//printArr(arr4);
+		minimumBribes2(arr4);
+		// print 4
+		// 1 2 5 3 4 7 8 6
+		minimumBribes2(arr5);
+		// Print 7
+		// 1 2 5 3 7 8 6 4
+		minimumBribes2(arr6);
 	}
 
 	/*
@@ -58,10 +84,90 @@ public class NewYearChaos {
 	 * 
 	 */
 	public static void minimumBribes(List<Integer> q) {
-		printArr(q);
-		
-		String result = "";
+		int resultInt = 0;
+		String result = new String("");
+		int qLength = q.size();
+
+		for (int i = 0; i < qLength; i++) {
+			if (qLength - 1 - i >= 1) {
+				if (q.get(i) > q.get(i + 1)) {
+					resultInt += 1;
+					result = String.valueOf(resultInt);
+				}
+
+				if (qLength - 1 - i >= 2) {
+					if (q.get(i) > q.get(i + 2)) {
+						resultInt += 1;
+						result = String.valueOf(resultInt);
+					}
+
+					if (qLength - 1 - i >= 3) {
+						if (q.get(i) > q.get(i + 3)) {
+							System.out.println("i: " + i);
+							result = new String("Too chaotic");
+							break;
+						}
+
+					}
+				}
+			}
+		}
+
 		System.out.println(result);
+	}
+	
+	public static void minimumBribes2(List<Integer> q) {
+		int resultInt = 0;
+		String result = new String("");
+		int qLength = q.size();
+		int[] brides = new int[qLength];
+		
+		for (int i = 0; i < brides.length; i++) {
+			brides[i] = 0;
+		}
+		
+		int temp = 0;
+		boolean swapped = false;
+		
+		// optimized bubble sort
+		for (int i = 0; i < qLength - 1; i++) {
+			
+			swapped = false;
+			for(int j = 0; j < qLength - i - 1; j++) {
+				
+				if(q.get(j) > q.get(j + 1)) {
+					temp = q.get(j);
+					
+					brides[temp - 1] += 1;
+					
+					// swapping
+					q.set(j, q.get(j + 1));
+					q.set(j + 1, temp);
+					
+					swapped = true;
+				}
+			}
+			
+			if(!swapped) {
+				break;
+			}
+		}
+		
+		for (int i = 0; i < brides.length; i++) {
+			
+			if(brides[i] < 3) {
+				resultInt += brides[i];
+				result = String.valueOf(resultInt);
+			} else {
+				result = "Too chaotic";
+				
+				break;
+			}
+			
+		}
+
+		System.out.println(result);
+		
 	}
 	
 	public static void printArr(List<Integer> q) {
