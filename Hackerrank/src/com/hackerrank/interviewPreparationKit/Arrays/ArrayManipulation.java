@@ -48,7 +48,7 @@ public class ArrayManipulation {
 		// return 10
 		System.out.println("queries: ");
 		printArr(q1);
-		System.out.println(arrayManipulationNaive(10, q1));
+		System.out.println(arrayManipulation(10, q1));
 		
 		// n = 5
 		//a b  k
@@ -58,7 +58,7 @@ public class ArrayManipulation {
 		// return 200
 		System.out.println("queries: ");
 		printArr(q2);
-		System.out.println(arrayManipulationNaive(5, q2));
+		System.out.println(arrayManipulation(5, q2));
 	}
 
 	public static long arrayManipulationNaive(int n, List<List<Integer>> queries) {
@@ -73,7 +73,6 @@ public class ArrayManipulation {
 				resultArray[j] += query.get(2);
 			}
 		}
-		printArr(resultArray);
 		
 		long max = 0;
 		for (int i = 0; i < resultArray.length; i++) {
@@ -85,7 +84,31 @@ public class ArrayManipulation {
 	}
 	
 	public static long arrayManipulation(int n, List<List<Integer>> queries) {
-		return 0L;
+		int queriesSize = queries.size();
+		List<Integer> resultArray = new ArrayList<>();
+		
+		for (int i = 0; i < n + 1; i++) {
+			resultArray.add(0);
+		}
+
+		List<Integer> query;
+		for (int i = 0; i < queriesSize; i++) {
+			query = queries.get(i);
+
+			resultArray.set(query.get(0) - 1, resultArray.get(query.get(0) - 1) + query.get(2));
+			resultArray.set(query.get(1), resultArray.get(query.get(1)) - query.get(2));
+		}
+
+		long max = 0;
+		long result = 0;
+		for (Integer resultItem : resultArray) {
+			result += resultItem;
+			if (result > max) {
+				max = result;
+			}
+		}
+
+		return max;
 	}
 	
 	public static void printArr(List<List<Integer>> arr) {
