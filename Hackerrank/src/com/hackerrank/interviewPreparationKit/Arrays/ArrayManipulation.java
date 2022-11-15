@@ -48,7 +48,7 @@ public class ArrayManipulation {
 		// return 10
 		System.out.println("queries: ");
 		printArr(q1);
-		arrayManipulation(10, q1);
+		System.out.println(arrayManipulationNaive(10, q1));
 		
 		// n = 5
 		//a b  k
@@ -58,18 +58,48 @@ public class ArrayManipulation {
 		// return 200
 		System.out.println("queries: ");
 		printArr(q2);
-		arrayManipulation(5, q2);
+		System.out.println(arrayManipulationNaive(5, q2));
 	}
 
+	public static long arrayManipulationNaive(int n, List<List<Integer>> queries) {
+		int queriesSize = queries.size();
+		long[] resultArray = new long[n];
+		List<Integer>query;
+		
+		for (int i = 0; i < queriesSize; i++) {
+			query = queries.get(i);
+			
+			for (int j = query.get(0) - 1; j <= query.get(1) - 1; j++) {
+				resultArray[j] += query.get(2);
+			}
+		}
+		printArr(resultArray);
+		
+		long max = 0;
+		for (int i = 0; i < resultArray.length; i++) {
+			if(resultArray[i] > max) {
+				max = resultArray[i];
+			}
+		}
+		return max;
+	}
+	
 	public static long arrayManipulation(int n, List<List<Integer>> queries) {
 		return 0L;
 	}
 	
-	public static void printArr(List<List<Integer>> queries) {
-		queries.forEach(q -> {
-			q.forEach(item -> System.out.print(item + " "));
+	public static void printArr(List<List<Integer>> arr) {
+		arr.forEach(r -> {
+			r.forEach(item -> System.out.print(item + " "));
 			System.out.println();
 		});
+		System.out.println();
+	}
+	
+	public static void printArr(long[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
 		System.out.println();
 	}
 
