@@ -6,6 +6,14 @@ import java.util.List;
 public class TwoDArrayDs {
 
 	public static void main(String[] args) {
+		/*
+		 * -9 -9 -9  1 1 1 
+		 *  0 -9  0  4 3 2
+		-* -9 -9 -9  1 2 3
+		 *  0  0  8  6 6 0
+		 *  0  0  0 -2 0 0
+		 *  0  0  1  2 4 0
+		 */
 		List<List<Integer>> arr = new ArrayList<>();
 		
 		arr.add(new ArrayList<>() {
@@ -39,7 +47,7 @@ public class TwoDArrayDs {
 			}
 		});
 		
-		System.out.println(hourglassSum(arr));
+		System.out.println(hourglassSum(arr)); // 28
 		
 		//-1 -1 0 -9 -2 -2
 		//-2 -1 -6 -8 -2 -5
@@ -125,44 +133,75 @@ public class TwoDArrayDs {
 		});
 		System.out.println();
 		System.out.println(hourglassSum(arr3));
+		
+		// 1 1 1 0 0 0
+		// 0 1 0 0 0 0
+		// 1 1 1 0 0 0
+		// 0 0 2 4 4 0
+		// 0 0 0 2 0 0
+		// 0 0 1 2 4 0
+		
+		List<List<Integer>> arr4 = new ArrayList<>();
+		
+		arr4.add(new ArrayList<>() {
+			{
+				add(1); add(1); add(1); add(0); add(0); add(0);
+			}
+		});
+		arr4.add(new ArrayList<>() {
+			{
+				add(0); add(1); add(0); add(0); add(0); add(0);
+			}
+		});
+		arr4.add(new ArrayList<>() {
+			{
+				add(1); add(1); add(1); add(0); add(0); add(0);
+			}
+		});
+		arr4.add(new ArrayList<>() {
+			{
+				add(0); add(0); add(2); add(4); add(4); add(0);
+			}
+		});
+		arr4.add(new ArrayList<>() {
+			{
+				add(0); add(0); add(0); add(2); add(0); add(0);
+			}
+		});
+		arr4.add(new ArrayList<>() {
+			{
+				add(0); add(0); add(1); add(2); add(4); add(0);
+			}
+		});
+		System.out.println();
+		System.out.println(hourglassSum(arr4)); // 19
 	}
 
-	/*
-	 * -9 -9 -9  1 1 1 
-	 *  0 -9  0  4 3 2
-	-*  9 -9 -9  1 2 3
-	 *  0  0  8  6 6 0
-	 *  0  0  0 -2 0 0
-	 *  0  0  1  2 4 0
-	 */
+	
 	public static int hourglassSum(List<List<Integer>> arr) {
-		int columnSize = arr.size();
-		int rowSize = arr.get(0).size();
+		int height = arr.size();
+		int width = arr.get(0).size();		
 		int maxSum = -9999;
-
-		List<Integer> currRow;
-		for (int i = 0; i < columnSize - 2; i++) {
-			int localSum;
-			
-			for (int j = 0; j < rowSize - 2; j++) {
-				localSum = 0;
-
-				currRow = arr.get(i);
-				for (int k = 0; k < 3; k++) {
-					localSum += currRow.get(j + k);
+		
+		for(int i = 0; i < height - 2;i++) {
+			for(int j = 0; j < width - 2; j++) {
+				int currSum = 0;
+				currSum += arr.get(i).get(j);
+				currSum += arr.get(i).get(j + 1);
+				currSum += arr.get(i).get(j + 2);
+				
+				currSum += arr.get(i + 1).get(j + 1);
+				
+				currSum += arr.get(i + 2).get(j);
+				currSum += arr.get(i + 2).get(j + 1);
+				currSum += arr.get(i + 2).get(j + 2);
+				
+				if(currSum > maxSum) {
+					maxSum = currSum;
 				}
-
-				currRow = arr.get(i + 1);
-				localSum += currRow.get(j + 1);
-
-				currRow = arr.get(i + 2);
-				for (int k = 0; k < 3; k++) {
-					localSum += currRow.get(j + k);
-				}
-
-				maxSum = Math.max(maxSum, localSum);
 			}
 		}
+		
 		return maxSum;
 	}
 }

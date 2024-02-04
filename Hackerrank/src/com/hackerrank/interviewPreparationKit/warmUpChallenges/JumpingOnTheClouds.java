@@ -22,39 +22,35 @@ public class JumpingOnTheClouds {
 			}
 		};
 		
-		System.out.println(jumpingOnClouds(arr1));
-		System.out.println(jumpingOnClouds(arr2));
+		System.out.println(jumpingOnClouds(arr1)); // 3
+		System.out.println(jumpingOnClouds(arr2)); // 4
 	}
 	
 	public static int jumpingOnClouds(List<Integer> c) {
-		int minJumps = 0;
-		int cloudLen = c.size();
-		int currentCloud = 0;		
-		boolean endFound = false;
-		int stepsForward = 0;
+		int jumpCount = 0;
+		int currPos = 0;
+		int pathLen = c.size();
+		boolean alreadyJumped;
 		
-		while(!endFound) {
+		while(currPos < pathLen - 1) {
+			alreadyJumped = false;
 			
-			if(currentCloud + 1 <= cloudLen - 1) {
-				if(c.get(currentCloud + 1) == 0) {
-					stepsForward = 1;
+			if(currPos + 2 < pathLen) {
+				if(c.get(currPos + 2) == 0) {
+					currPos += 2;
+					alreadyJumped = true;
 				}
 			}
 			
-			if(currentCloud + 2 <= cloudLen - 1) {
-				if(c.get(currentCloud + 2) == 0) {
-					stepsForward = 2;
+			if(!alreadyJumped && currPos + 1 < pathLen) {
+				if(c.get(currPos + 1) == 0) {
+					currPos += 1;
 				}
 			}
-			currentCloud += stepsForward;
 			
-			++minJumps;
-			
-			if(currentCloud >= cloudLen - 1) {
-				endFound = true;
-			}
+			++jumpCount;
 		}
 		
-		return minJumps;
+		return jumpCount;
 	}
 }

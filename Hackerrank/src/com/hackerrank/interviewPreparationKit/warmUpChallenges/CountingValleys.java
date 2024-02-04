@@ -1,6 +1,9 @@
 package com.hackerrank.interviewPreparationKit.warmUpChallenges;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class CountingValleys {
 	
@@ -13,6 +16,12 @@ public class CountingValleys {
 	 * 	 D   U
 	 *     D
 	 *     
+	 * [ U D D D U D U U]
+	 * 
+	 *   U
+	 * [   D           U
+	 *       D   U   U
+	 *         D  D 
 	 *  
 	 *  {
 	 *    D
@@ -24,32 +33,38 @@ public class CountingValleys {
 	public static void main(String[] args) {
 		System.out.println(countingValleys(8, "DDUUUUDD")); // 1
 		System.out.println(countingValleys(8, "UDDDUDUU")); // 1
+		System.out.println(countingValleys(12, "DDUUDDUDUUUD")); // 2
 	}
 	
-	public static int countingValleys(int steps, String path) {		
-		String[] pathArr = path.split("");
-		int valleysCount = 0;
+	public static int countingValleys(int steps, String path) {
+		int valleys = 0;
+		boolean intoTheValley = false;
+		boolean outTheValley = false;
+		int seaLevel = 0;
+		int currentLevel = seaLevel;
 		
-		int altitude = 0;
-		int lastAltitude = 0;
-		
-		for(int i = 0; i < steps; i++) {
-			lastAltitude = altitude;
-			
-			if(pathArr[i].equals("U")) {
-				//
-				altitude++;
-			} 
-			
-			else if(pathArr[i].equals("D")) {
-				altitude--;
+		for(String pathElement : Arrays.asList(path.split(""))) {
+			if(Objects.equals(pathElement, "D")) {
+				if(currentLevel == seaLevel) {
+					intoTheValley = true;
+				}
+				currentLevel -= 1;
 			}
 			
-			if(lastAltitude == -1 && altitude == 0) {
-				valleysCount++;
+			else if(Objects.equals(pathElement, "U")) {
+				if(intoTheValley == true && currentLevel + 1 == seaLevel) {
+					outTheValley = true;
+				}
+				currentLevel += 1;
+			}
+			
+			if(intoTheValley && outTheValley) {
+				intoTheValley = false;
+				outTheValley = false;
+				valleys += 1;
 			}
 		}
 		
-		return valleysCount;
+		return valleys;
 	}
 }
