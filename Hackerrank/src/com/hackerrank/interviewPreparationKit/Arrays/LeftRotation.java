@@ -10,12 +10,15 @@ public class LeftRotation {
 		//5 4
 		//1 2 3 4 5
 		List<Integer> arr1 = new ArrayList<>() {
+			private static final long serialVersionUID = 1L;
+
 			{
 				add(1); add(2); add(3); add(4); add(5);
 			}
 		};
 				
 		printArr(arr1);
+		System.out.println();
 		printArr(rotLeft(arr1, 1));
 		printArr(rotLeft(arr1, 2));
 		printArr(rotLeft(arr1, 3));
@@ -32,35 +35,25 @@ public class LeftRotation {
 		System.out.println();
 	}
 	
-	/*
-	 * invert the array
-	 * calculate new items index with modulus and insert inverted array at new pos in list
-	 * invert the list   
-	 *  
-	 */
 	public static List<Integer> rotLeft(List<Integer> a, int d) {
-		int aLength = a.size(); 
+		int listLen = a.size();
+		Integer[] rotatedArr = new Integer[listLen];
+		ArrayList<Integer> rotatedList = new ArrayList<>();
+		ArrayList<Integer> reversedList = new ArrayList<>();
 		
-		if(d == aLength) {
-			return a;
+		for(int i = listLen - 1; i >= 0; i--) {
+			reversedList.add(a.get(i));
 		}
 		
-		List<Integer> resultList = new ArrayList<>();
-	    List<Integer> invertedArr = new ArrayList<>();
-	    Integer[] invertedResultArray = new Integer[aLength];
-	    
-	    for(int i = aLength - 1; i >= 0; i--) {
-	    	invertedArr.add(a.get(i));
-	    }
-	    
-		for (int i = 0; i < aLength; i++) {
-			invertedResultArray[(i + d) % (aLength)] = invertedArr.get(i);
+		for(int i = 0; i < listLen; i++) {
+			int newIdx = Math.floorMod(d + i, listLen);  
+			rotatedArr[newIdx] = reversedList.get(i);
 		}
 		
-		for(int i = aLength - 1; i >= 0; i--) {
-			resultList.add(invertedResultArray[i]);
-	    }
+		for(int i = listLen - 1; i >= 0; i--) {
+			rotatedList.add(rotatedArr[i]);
+		}
 		
-	    return resultList;
+		return rotatedList;
 	}
 }

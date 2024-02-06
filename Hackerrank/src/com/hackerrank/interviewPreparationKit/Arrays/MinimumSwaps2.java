@@ -21,33 +21,25 @@ public class MinimumSwaps2 {
 	
 	// Complete the minimumSwaps function below.
     public static int minimumSwaps(int[] arr) {
-    	int minMovements = 0;
+    	int swapCount = 0;
+    	int arrLen = arr.length;
     	
-    	// selection sort
-    	for (int i = 0; i < arr.length - 1; i++) {
-    		// if current number is not sorted yet, if so, then go next pos
-    		// to avoid searching a greater number where there is no one
-    		if(arr[i] != i + 1) {
-    			int minIndex = i;
-        		
-        		for(int j = i + 1; j < arr.length; j++) {
-        			
-        			if(arr[j] < arr[minIndex]) {
-        				minIndex = j;
-        			}	
-        		}
-        		
-        		if(minIndex != i) {
-        			int temp = arr[minIndex];
-            		arr[minIndex] = arr[i];
-            		arr[i] = temp;
-            		
-            		++minMovements;
+    	for(int i = 0; i < arrLen - 1; i++) {
+    		if(i + 1 != arr[i]) {
+    			for(int j = i + 1; j < arrLen; j++) {
+        			if(arr[j] == i + 1) {
+        				int temp = arr[i];
+        				arr[i] = arr[j];
+        				arr[j] = temp;
+        				
+        				++swapCount;
+        				break;
+        			}
         		}
     		}
-		}
+    	}
     	
-    	return minMovements;
+    	return swapCount;
     }
     
     public static void printArr(int[] arr) {
