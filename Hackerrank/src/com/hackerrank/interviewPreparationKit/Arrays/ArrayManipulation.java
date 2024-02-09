@@ -60,55 +60,55 @@ public class ArrayManipulation {
 		printArr(q2);
 		System.out.println(arrayManipulation(5, q2));
 	}
-
-	public static long arrayManipulationNaive(int n, List<List<Integer>> queries) {
-		int queriesSize = queries.size();
-		long[] resultArray = new long[n];
-		List<Integer>query;
-		
-		for (int i = 0; i < queriesSize; i++) {
-			query = queries.get(i);
-			
-			for (int j = query.get(0) - 1; j <= query.get(1) - 1; j++) {
-				resultArray[j] += query.get(2);
-			}
-		}
-		
-		long max = 0;
-		for (int i = 0; i < resultArray.length; i++) {
-			if(resultArray[i] > max) {
-				max = resultArray[i];
-			}
-		}
-		return max;
-	}
 	
 	public static long arrayManipulation(int n, List<List<Integer>> queries) {
-		int queriesSize = queries.size();
-		List<Integer> resultArray = new ArrayList<>();
+		int[] operationList = new int[n];
+		long maxAccumulate = -9999;
 		
-		for (int i = 0; i < n + 1; i++) {
-			resultArray.add(0);
+		for(int i = 0; i < n; i++) {
+			operationList[i] = 0;
 		}
-
-		List<Integer> query;
-		for (int i = 0; i < queriesSize; i++) {
-			query = queries.get(i);
-
-			resultArray.set(query.get(0) - 1, resultArray.get(query.get(0) - 1) + query.get(2));
-			resultArray.set(query.get(1), resultArray.get(query.get(1)) - query.get(2));
-		}
-
-		long max = 0;
-		long result = 0;
-		for (Integer resultItem : resultArray) {
-			result += resultItem;
-			if (result > max) {
-				max = result;
+		
+		for(List<Integer> query : queries) {
+			operationList[query.get(0) - 1] += query.get(2);
+			int index = query.get(1);
+			if(index < n) {
+				operationList[index] += -query.get(2);
 			}
 		}
-
-		return max;
+		
+		long accumulate = 0;
+		for(int i = 0; i < n; i++) {
+			accumulate += operationList[i];
+			maxAccumulate = Math.max(accumulate, maxAccumulate);
+		}
+		
+		return maxAccumulate;
+	}
+	
+	public static long naiveArrayManipulation(int n, List<List<Integer>> queries) {
+		long[] zeroList = new long[n];
+		long maxItem = 0;
+		
+		for(int i = 0; i < n; i++) {
+			zeroList[i] = 0;
+		}
+		
+		for(List<Integer> query : queries) {
+			int startIdx = query.get(0) - 1;
+			int endIdx = query.get(1) - 1;
+			int summand = query.get(2);
+			
+			for(int i = startIdx; i <= endIdx; i++) {
+				zeroList[i] = zeroList[i] + summand; 
+			}
+		}
+		
+		for(int i = 0; i < n; i++) {
+			maxItem = Math.max(maxItem, zeroList[i]);
+		}
+		
+		return maxItem;
 	}
 	
 	public static void printArr(List<List<Integer>> arr) {
