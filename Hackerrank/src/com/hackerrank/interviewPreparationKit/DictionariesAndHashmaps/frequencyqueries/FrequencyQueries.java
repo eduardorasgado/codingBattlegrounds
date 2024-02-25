@@ -77,7 +77,7 @@ public class FrequencyQueries {
 	
 	static List<Integer> freqQuery(List<List<Integer>> queries) {
 		HashMap<Integer, Integer> occurenceMap = new HashMap<>();
-		HashMap<Integer, Map<Integer, Boolean>> currCountMap = new HashMap<>();
+		HashMap<Integer, Integer> currCountMap = new HashMap<>();
 		List<Integer> resultList = new ArrayList<>();
 		
 		for(List<Integer> query : queries) {
@@ -93,7 +93,7 @@ public class FrequencyQueries {
 				break;
 				
 			case 2:
-				if(currCountMap.get(currNumber) != null && !currCountMap.get(currNumber).isEmpty()) {
+				if(currCountMap.get(currNumber) != null && currCountMap.get(currNumber) > 0) {
 					resultList.add(1);
 				} else {
 					resultList.add(0);
@@ -106,7 +106,7 @@ public class FrequencyQueries {
     }
 	
 	static void addOccurence(HashMap<Integer, Integer> occurenceMap, int currNumber, 
-			HashMap<Integer, Map<Integer, Boolean>> currCountMap) {
+			HashMap<Integer, Integer> currCountMap) {
 		int occurence = 0;
 		Integer oldOccurence = null;
 		
@@ -123,7 +123,7 @@ public class FrequencyQueries {
 	}
 	
 	static void removeOccurence(HashMap<Integer, Integer> occurenceMap, int currNumber, 
-			HashMap<Integer, Map<Integer, Boolean>> currCountMap) {
+			HashMap<Integer, Integer> currCountMap) {
 		int occurence = 0;
 		Integer oldOccurence = null;
 		
@@ -138,18 +138,15 @@ public class FrequencyQueries {
 	}
 	
 	static void updateOccurenceMap(int currNumber, Integer occurence, 
-			HashMap<Integer, Map<Integer, Boolean>> currCountMap, boolean isAdding) {
+			HashMap<Integer, Integer> currCountMap, boolean isAdding) {
 		if(occurence != null) {
-			Map<Integer, Boolean> occMap = 
-					currCountMap.containsKey(occurence) ? currCountMap.get(occurence) : new HashMap<>();
+			Integer count = currCountMap.containsKey(occurence) ? currCountMap.get(occurence) : 0;
 			
 			if(isAdding) {
-				occMap.put(currNumber, true);
+				currCountMap.put(occurence, count + 1);
 			} else {
-				occMap.remove(currNumber);
+				currCountMap.put(occurence, count - 1);
 			}
-			
-			currCountMap.put(occurence, occMap);
 		}
 	}
 	
