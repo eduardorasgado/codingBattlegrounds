@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+// link: https://www.hackerrank.com/challenges/frequency-queries/problem
 public class FrequencyQueries {
 
 	public static void main(String[] args) {

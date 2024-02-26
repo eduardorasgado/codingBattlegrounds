@@ -1,5 +1,6 @@
 package com.hackerrank.interviewPreparationKit.stringManipulation;
 
+// link: https://www.hackerrank.com/challenges/alternating-characters/problem
 public class AlternatingCharacters {
 
 	public static void main(String[] args) {

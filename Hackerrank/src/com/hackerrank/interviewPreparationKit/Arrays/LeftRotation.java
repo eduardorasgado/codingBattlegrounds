@@ -1,9 +1,9 @@
 package com.hackerrank.interviewPreparationKit.Arrays;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+// link: https://www.hackerrank.com/challenges/ctci-array-left-rotation/problem
 public class LeftRotation {
 
 	public static void main(String[] args) {

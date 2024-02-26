@@ -1,10 +1,9 @@
 package com.hackerrank.interviewPreparationKit.warmUpChallenges;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
+// link: https://www.hackerrank.com/challenges/counting-valleys/problem
 public class CountingValleys {
 	
 	/**

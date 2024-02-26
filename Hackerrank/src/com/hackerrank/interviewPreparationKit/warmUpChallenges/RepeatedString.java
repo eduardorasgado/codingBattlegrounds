@@ -2,6 +2,7 @@ package com.hackerrank.interviewPreparationKit.warmUpChallenges;
 
 import java.util.Objects;
 
+// link: https://www.hackerrank.com/challenges/repeated-string/problem
 public class RepeatedString {
 	
 	public static void main(String[] args) {
@@ -14,11 +15,6 @@ public class RepeatedString {
 		System.out.println(repeatedString("a", 1000000000000L)); // 1000000000000
 	}
 	
-	/**
-	 * @param s
-	 * @param n
-	 * @return
-	 */
 	public static long repeatedString(String s, long n) {
 		long stringLen = s.length();
 		long sReps = Math.floorDiv(n, stringLen);

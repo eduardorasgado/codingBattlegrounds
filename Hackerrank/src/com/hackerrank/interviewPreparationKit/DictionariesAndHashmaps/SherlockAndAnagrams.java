@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+// link: https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem
 public class SherlockAndAnagrams {
 
 	public static void main(String[] args) {

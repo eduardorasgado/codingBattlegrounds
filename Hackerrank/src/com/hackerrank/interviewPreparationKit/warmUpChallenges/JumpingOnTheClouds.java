@@ -3,6 +3,7 @@ package com.hackerrank.interviewPreparationKit.warmUpChallenges;
 import java.util.ArrayList;
 import java.util.List;
 
+// link: https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem
 public class JumpingOnTheClouds {
 	
 	/*                 

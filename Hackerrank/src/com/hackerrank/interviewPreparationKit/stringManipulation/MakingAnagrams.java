@@ -2,6 +2,7 @@ package com.hackerrank.interviewPreparationKit.stringManipulation;
 
 import java.util.HashMap;
 
+// link: https://www.hackerrank.com/challenges/ctci-making-anagrams/problem
 public class MakingAnagrams {
 
 	public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class MakingAnagrams {
 		}
 		
 		for(int count : countMap.values()) {
-			minDeletions += count != 0 ? Math.abs(count) : 0;
+			minDeletions += Math.abs(count);
 		}
 		
 		return minDeletions;

@@ -1,24 +1,13 @@
-/**
- * 
- */
 package com.hackerrank.interviewPreparationKit.warmUpChallenges;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
-/**
- * @author Eduardo Rasgado
- *
- */
+// link: https://www.hackerrank.com/challenges/sock-merchant/problem
 public class SalesByMatch {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		ArrayList<Integer> myArr = new ArrayList<Integer>()
 		{

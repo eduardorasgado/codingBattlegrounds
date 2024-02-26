@@ -2,6 +2,7 @@ package com.hackerrank.interviewPreparationKit.DictionariesAndHashmaps;
 
 import java.util.HashMap;
 
+// link: https://www.hackerrank.com/challenges/two-strings/problem
 public class TwoStrings {
 	
 	public static void main(String[] args) {

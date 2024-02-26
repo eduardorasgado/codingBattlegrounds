@@ -3,6 +3,7 @@ package com.hackerrank.interviewPreparationKit.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
+// link: https://www.hackerrank.com/challenges/crush/problem
 public class ArrayManipulation {
 
 	public static void main(String[] args) {

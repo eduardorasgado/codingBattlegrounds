@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+// link: https://www.hackerrank.com/challenges/new-year-chaos/problem
 public class NewYearChaos {
 
 	public static void main(String[] args) {

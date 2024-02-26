@@ -1,10 +1,10 @@
 package com.hackerrank.interviewPreparationKit.DictionariesAndHashmaps;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+// link: https://www.hackerrank.com/challenges/count-triplets-1/problem
 public class CountTriplets {
 
 	public static void main(String[] args) {

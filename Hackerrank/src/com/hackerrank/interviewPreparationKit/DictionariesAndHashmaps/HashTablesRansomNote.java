@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+// link: https://www.hackerrank.com/challenges/ctci-ransom-note/problem
 public class HashTablesRansomNote {
 
 	public static void main(String[] args) {

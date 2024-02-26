@@ -1,5 +1,6 @@
 package com.hackerrank.interviewPreparationKit.Arrays;
 
+// link: https://www.hackerrank.com/challenges/minimum-swaps-2/problem
 public class MinimumSwaps2 {
 
 	public static void main(String[] args) {
